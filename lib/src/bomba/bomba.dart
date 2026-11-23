@@ -43,7 +43,7 @@ class BomberSim extends ArcadeSim {
   final Map<int, int> flames = {}; // hücre → bitiş tiki
   final List<Monster> monsters = [];
   int doorX = 0, doorY = 0, range = 2, maxBombs = 1, levelsDone = 0, killed = 0, crates = 0, lastEvent = 0, doneAt = -1;
-  late final int goalN = level.target(2, 0) == 0 ? 0 : 2 + level.d ~/ 3;
+  late final int goalN = level.target(2, 0) == 0 ? 0 : 2 + level.d ~/ 4;
 
   BomberSim(this.level) : super(level.meta) {
     _newMap();
@@ -53,7 +53,7 @@ class BomberSim extends ArcadeSim {
 
   void _newMap() {
     g = List.generate(kW, (x) => List.generate(kH, (y) => (x == 0 || y == 0 || x == kW - 1 || y == kH - 1 || (x.isEven && y.isEven)) ? 1 : 0));
-    final crateP = 0.35 + level.d * 0.03;
+    final crateP = 0.35 + level.d * 0.02;
     for (var x = 1; x < kW - 1; x++) {
       for (var y = 1; y < kH - 1; y++) {
         if (g[x][y] == 0 && x + y > 3 && rng.chance(crateP)) g[x][y] = 2;
@@ -66,7 +66,7 @@ class BomberSim extends ArcadeSim {
     doorY = dy0;
     g[doorX][doorY] = 2;
     monsters.clear();
-    final n = 2 + level.d ~/ 2;
+    final n = 2 + math.min<int>(level.d ~/ 3, 3);
     var tries = 0;
     while (monsters.length < n && tries++ < 500) {
       final x = 1 + rng.nextInt(kW - 2), y = 1 + rng.nextInt(kH - 2);
@@ -163,7 +163,7 @@ class BomberSim extends ArcadeSim {
     }
     flames.removeWhere((k, end) => end <= ticks);
     // Canavarlar
-    final mStep = math.max(10, 22 - level.d);
+    final mStep = math.max<int>(13, 22 - level.d);
     for (final m in monsters) {
       if (m.dead) continue;
       if (flames.containsKey(key(m.x, m.y))) {

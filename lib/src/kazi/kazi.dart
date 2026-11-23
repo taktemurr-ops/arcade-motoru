@@ -35,7 +35,7 @@ class DigSim extends ArcadeSim {
   double fx = kW / 2, fy = 0;
   final List<Critter> critters = [];
   int layers = 0, popped = 0, cellsDug = 0, lastEvent = 0, pumpAt = -100, pumpLen = 0, doneAt = -1;
-  late final int goalN = level.target(2, 0) == 0 ? 0 : 2 + level.d ~/ 3;
+  late final int goalN = level.target(2, 0) == 0 ? 0 : 2 + level.d ~/ 4;
 
   DigSim(this.level) : super(level.meta) {
     _newLayer();
@@ -47,7 +47,7 @@ class DigSim extends ArcadeSim {
       dug[kW ~/ 2][y] = true;
     }
     critters.clear();
-    final n = 2 + math.min(level.d ~/ 2, 4);
+    final n = 2 + math.min<int>(level.d ~/ 3, 3);
     for (var i = 0; i < n; i++) {
       // her yaratık kısa bir yatay/dikey tünelde
       final horiz = rng.chance(0.5);
@@ -128,7 +128,7 @@ class DigSim extends ArcadeSim {
     if (moveT > 0) moveT--;
     fx = moveToward(fx, px.toDouble(), 1 / 8);
     fy = moveToward(fy, py.toDouble(), 1 / 8);
-    final step = math.max(14, 30 - level.d * 2);
+    final step = math.max<int>(18, 30 - level.d);
     for (final c in critters) {
       if (c.dead) continue;
       if (c.inflate > 0 && ticks - c.lastPump > 70) {
@@ -137,7 +137,7 @@ class DigSim extends ArcadeSim {
       }
       if (c.inflate > 0) continue;
       if (ticks % step == 0) {
-        if (!c.ghost && rng.chance(0.04 + level.d * 0.004)) c.ghost = true;
+        if (!c.ghost && rng.chance(0.03 + level.d * 0.002)) c.ghost = true;
         if (c.ghost) {
           // oyuncuya doğru topraktan süzül
           if ((px - c.x).abs() > (py - c.y).abs()) {

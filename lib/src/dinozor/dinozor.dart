@@ -80,12 +80,10 @@ class DinoSim extends ArcadeSim {
     // çarpışma
     final h = ducking && onGround ? 70.0 : 130.0;
     final dl = kDinoX - 40, dr = kDinoX + 40, dt = y - h, db = y;
-    for (final o in obs) {
-      if (dr > o.x + 8 && dl < o.x + o.w - 8 && db > o.top + 8 && dt < o.bottom - 8) {
-        hit();
-        lastEvent = 3;
-        if (over) return;
-      }
+    if (obs.any((o) => dr > o.x + 8 && dl < o.x + o.w - 8 && db > o.top + 8 && dt < o.bottom - 8)) {
+      hit();
+      lastEvent = 3;
+      if (over) return;
     }
     if (goalM > 0 && meters >= goalM) win();
     if (meters > 0 && meters % 100 == 0 && lastEvent == 0 && (dist0 - speed) ~/ 1000 != dist0 ~/ 1000) lastEvent = 2;

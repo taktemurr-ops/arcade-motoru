@@ -164,6 +164,7 @@ class TankSim extends ArcadeSim {
       s.x += s.vx;
       s.y += s.vy;
     }
+    var gotHit = false;
     shells.removeWhere((s) {
       if (blocked(s.x, s.y)) {
         fx.add(Fx(s.x, s.y, ticks, 4));
@@ -178,12 +179,16 @@ class TankSim extends ArcadeSim {
           }
         }
       } else if (dist(s.x, s.y, me.x, me.y) < kTankR + 6) {
-        lastEvent = 3;
-        hit();
+        gotHit = true;
         return true;
       }
       return false;
     });
+    if (gotHit) {
+      lastEvent = 3;
+      hit();
+      if (over) return;
+    }
     for (final f in [...foes]) {
       if (f.hp <= 0) {
         foes.remove(f);
