@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:studio_core/app/arcade_stage.dart';
-import 'package:studio_core/app/game_api.dart';
 import 'package:studio_core/app/play_kit.dart';
 import 'package:studio_core/app/services/audio.dart';
 import 'package:studio_core/core/arcade.dart';
-import 'package:studio_core/core/game_rules.dart';
 import 'flappy_engine.dart';
-import 'rules.dart';
 
 void paintFlappy(Canvas c, ArcadeSim sim, ArcadePalette p, double t) {
   final s = sim as FlappySim;
@@ -66,5 +63,4 @@ Sfx? flappySound(ArcadeSim sim) => switch ((sim as FlappySim).lastEvent) {
       3 => Sfx.coin,
       _ => null,
     };
-
 

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:studio_core/app/arcade_stage.dart';
-import 'package:studio_core/app/game_api.dart';
 import 'package:studio_core/app/play_kit.dart';
 import 'package:studio_core/app/services/audio.dart';
 import 'package:studio_core/core/arcade.dart';
-import 'package:studio_core/core/game_rules.dart';
 import 'invaders_engine.dart';
-import 'rules.dart';
 
 void _alien(Canvas c, Offset o, int type, Color col, double t) {
   final body = Rect.fromCenter(center: o, width: kEnemyW, height: kEnemyH * 0.7);
@@ -101,5 +98,4 @@ Sfx? invadersSound(ArcadeSim sim) => switch ((sim as InvadersSim).lastEvent) {
       3 => Sfx.tap,
       _ => null,
     };
-
 

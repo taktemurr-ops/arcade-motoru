@@ -3,13 +3,10 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import 'package:studio_core/app/arcade_stage.dart';
-import 'package:studio_core/app/game_api.dart';
 import 'package:studio_core/app/play_kit.dart';
 import 'package:studio_core/app/services/audio.dart';
 import 'package:studio_core/core/arcade.dart';
-import 'package:studio_core/core/game_rules.dart';
 import 'stack_engine.dart';
-import 'rules.dart';
 import '../texts.dart';
 
 void paintStack(Canvas c, ArcadeSim sim, ArcadePalette p, double t) {
@@ -49,5 +46,4 @@ Sfx? stackSound(ArcadeSim sim) => switch ((sim as StackSim).lastEvent) {
       3 => Sfx.error,
       _ => null,
     };
-
 

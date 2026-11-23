@@ -45,7 +45,7 @@ class SlingSim extends ArcadeSim {
 
   void _build() {
     grid = List.generate(kGridCols, (_) => List<int>.filled(kGridRows, 0));
-    final nTargets = 1 + math.min(level.d ~/ 3, 3) + rng.nextInt(2);
+    final nTargets = 1 + math.min<int>(level.d ~/ 3, 3) + rng.nextInt(2);
     final cols = [for (var c = 0; c < kGridCols; c++) c];
     rng.shuffle(cols);
     for (var k = 0; k < nTargets; k++) {

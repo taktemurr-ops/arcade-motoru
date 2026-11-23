@@ -3,13 +3,10 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import 'package:studio_core/app/arcade_stage.dart';
-import 'package:studio_core/app/game_api.dart';
 import 'package:studio_core/app/play_kit.dart';
 import 'package:studio_core/app/services/audio.dart';
 import 'package:studio_core/core/arcade.dart';
-import 'package:studio_core/core/game_rules.dart';
 import 'td_engine.dart';
-import 'rules.dart';
 
 void paintTd(Canvas c, ArcadeSim sim, ArcadePalette p, double t) {
   final s = sim as TdSim;
@@ -96,5 +93,4 @@ Sfx? tdSound(ArcadeSim sim) => switch ((sim as TdSim).lastEvent) {
       6 => Sfx.error,
       _ => null,
     };
-
 

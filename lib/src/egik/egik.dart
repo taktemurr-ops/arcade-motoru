@@ -32,7 +32,7 @@ class TiltSim extends ArcadeSim {
   Offset center(int r, int c) => Offset((c + 0.5) * cell, kTop + (r + 0.5) * cell);
 
   void _newMaze() {
-    final mc = 4 + math.min(level.d ~/ 3, 2); // labirent hücresi (sütun)
+    final mc = 4 + math.min<int>(level.d ~/ 3, 2); // labirent hücresi (sütun)
     final mr = (mc * 1.4).floor();
     cols = mc * 2 + 1;
     rows = mr * 2 + 1;
