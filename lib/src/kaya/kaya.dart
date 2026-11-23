@@ -27,7 +27,7 @@ class BoulderSim extends ArcadeSim {
   int px = 1, py = 1, moveT = 0, wantDir = -1;
   double fx = 1, fy = 1;
   int gems = 0, need = 0, caves = 0, totalGems = 0, lastEvent = 0, doneAt = -1, exitX = 0, exitY = 0;
-  late final int goalN = level.target(2, 0) == 0 ? 0 : 2 + level.d ~/ 3;
+  late final int goalN = level.target(2, 0) == 0 ? 0 : 2 + level.d ~/ 5;
   late List<List<int>> _start;
 
   BoulderSim(this.level) : super(level.meta) {
@@ -58,7 +58,7 @@ class BoulderSim extends ArcadeSim {
     exitX = kW - 2;
     exitY = kH - 2;
     g[exitX][exitY] = kWall; // kapalı çıkış
-    need = math.max(3, (gemCount * (0.45 + level.d * 0.02)).round());
+    need = math.max(3, (gemCount * (0.42 + level.d * 0.015)).round());
     totalGems = gemCount;
     falling = List.generate(kW, (_) => List<bool>.filled(kH, false));
     // Başlangıçta havada duran kayaları yerleştir (fiziği oturt).
