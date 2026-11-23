@@ -1,0 +1,20 @@
+name: arcade_motoru
+description: "Arcade Klasikleri ailesinin ortak motorları (studio-core ArcadeSim üzerinde)."
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  studio_core:
+    git:
+      url: https://github.com/taktemurr-ops/studio-core
+      ref: bb1aa584c8d81a285087afe2f1b3a4d312147c9c
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
