@@ -51,6 +51,7 @@ import 'package:arcade_motoru/platform.dart' as platform;
 import 'package:arcade_motoru/tank.dart' as tank;
 import 'package:arcade_motoru/yilanio.dart' as yilanio;
 import 'package:arcade_motoru/hiper.dart' as hiper;
+import 'package:arcade_motoru/denge.dart' as denge;
 import 'package:studio_core/core/arcade.dart';
 import 'package:studio_core/core/level_plan.dart';
 
@@ -116,6 +117,7 @@ void main() {
     ('tank-tankRules', () => tank.tankRules('oyun-test-tank-tankrules')),
     ('yilanio-snakeIoRules', () => yilanio.snakeIoRules('oyun-test-yilanio-snakeiorules')),
     ('hiper-hyperRules', () => hiper.hyperRules('oyun-test-hiper-hyperrules')),
+    ('denge-balanceRules', () => denge.balanceRules('oyun-test-denge-balancerules')),
   ];
   for (final (name, make) in all) {
     test(name, timeout: const Timeout(Duration(minutes: 15)), () {
