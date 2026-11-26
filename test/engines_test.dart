@@ -52,6 +52,12 @@ import 'package:arcade_motoru/tank.dart' as tank;
 import 'package:arcade_motoru/yilanio.dart' as yilanio;
 import 'package:arcade_motoru/hiper.dart' as hiper;
 import 'package:arcade_motoru/denge.dart' as denge;
+import 'package:arcade_motoru/tepe.dart' as tepe;
+import 'package:arcade_motoru/kriket.dart' as kriket;
+import 'package:arcade_motoru/kalabalik.dart' as kalabalik;
+import 'package:arcade_motoru/kabaddi.dart' as kabaddi;
+import 'package:arcade_motoru/badminton.dart' as badminton;
+import 'package:arcade_motoru/ucurtma.dart' as ucurtma;
 import 'package:studio_core/core/arcade.dart';
 import 'package:studio_core/core/level_plan.dart';
 
@@ -118,6 +124,12 @@ void main() {
     ('yilanio-snakeIoRules', () => yilanio.snakeIoRules('oyun-test-yilanio-snakeiorules')),
     ('hiper-hyperRules', () => hiper.hyperRules('oyun-test-hiper-hyperrules')),
     ('denge-balanceRules', () => denge.balanceRules('oyun-test-denge-balancerules')),
+    ('tepe-hillClimbRules', () => tepe.hillClimbRules('oyun-test-tepe-hillclimbrules')),
+    ('kriket-cricketRules', () => kriket.cricketRules('oyun-test-kriket-cricketrules')),
+    ('kalabalik-crowdRules', () => kalabalik.crowdRules('oyun-test-kalabalik-crowdrules')),
+    ('kabaddi-kabaddiRules', () => kabaddi.kabaddiRules('oyun-test-kabaddi-kabaddirules')),
+    ('badminton-badmintonRules', () => badminton.badmintonRules('oyun-test-badminton-badmintonrules')),
+    ('ucurtma-kiteRules', () => ucurtma.kiteRules('oyun-test-ucurtma-kiterules')),
   ];
   for (final (name, make) in all) {
     test(name, timeout: const Timeout(Duration(minutes: 15)), () {
